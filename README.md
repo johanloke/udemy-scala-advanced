@@ -1,2 +1,2 @@
-# udemy-scala-advanced
+# udemy-scala-advanced-personal
 self learn
