@@ -45,6 +45,7 @@ object EqualityPlayground extends App {
   }
 
   println(john === anotherJohn)
+  println(john !== anotherJohn)
   /*
     john.===(anotherJohn)
     new TypeSafeEqual[User](john).===(anotherJohn)
