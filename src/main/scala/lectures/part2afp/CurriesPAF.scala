@@ -47,12 +47,12 @@ object CurriesPAF extends App {
   // y => simpleAddMethod(7, y)
 
   //Validation
-  println("add7_1", add7_1(5))
-  println("add7_2", add7_2(5))
-  println("add7_3", add7_3(5))
-  println("add7_4", add7_4(5))
-  println("add7_5", add7_5(5))
-  println("add7_6", add7_6(5))
+  println("add7_1" + add7_1(5))
+  println("add7_2" + add7_2(5))
+  println("add7_3" + add7_3(5))
+  println("add7_4" + add7_4(5))
+  println("add7_5" + add7_5(5))
+  println("add7_6" + add7_6(5))
 
   // underscores are powerful
   def concatenator(a: String, b: String, c: String) = a + b + c
@@ -114,7 +114,7 @@ object CurriesPAF extends App {
   byName(23) // ok
   byName(method) // ok
   byName(parenMethod())
-  byName(parenMethod) // ok but beware ==> byName(parentMethod()) . Scala3 will not work though
+  //  byName(parenMethod) // ok but beware ==> byName(parentMethod()) . Scala3 will not work though
   //  byName(() => 42) // not ok
   byName((() => 42) ()) // ok
   //  byName(parenMethod _) // not ok

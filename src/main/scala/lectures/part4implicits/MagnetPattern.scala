@@ -24,6 +24,9 @@ object MagnetPattern extends App {
 
     def receive[T: Serializer](message: T): Int
 
+    //Equivalent to above
+    //    def receive[T](message: T)(implicit serializer: Serializer[T]): Int
+
     def receive[T: Serializer](message: T, statusCode: Int): Int
 
     def receive(future: Future[P2PRequest]): Int
@@ -38,7 +41,7 @@ object MagnetPattern extends App {
       val receiveFV = receive _ // ?!
 
     3 - code duplication
-    4 - type inferrence and default args
+    4 - type inference and default args
 
       actor.receive(?!)
    */
@@ -70,11 +73,11 @@ object MagnetPattern extends App {
 
   // 1 - no more type erasure problems!
   implicit class FromResponseFuture(future: Future[P2PResponse]) extends MessageMagnet[Int] {
-    override def apply(): Int = 2
+    override def apply(): Int = 22
   }
 
   implicit class FromRequestFuture(future: Future[P2PRequest]) extends MessageMagnet[Int] {
-    override def apply(): Int = 3
+    override def apply(): Int = 333
   }
 
   println(receive(Future(new P2PRequest)))
@@ -104,8 +107,8 @@ object MagnetPattern extends App {
   }
 
   val addFV = add1 _
-  println(addFV(1))
-  println(addFV("3"))
+  println("Add integer " + addFV(1))
+  println("Add string " + addFV("3"))
 
   //  val receiveFV = receive _
   //  receiveFV(new P2PResponse)
@@ -148,6 +151,7 @@ object MagnetPattern extends App {
   //  handle(sideEffectMethod())
   handle {
     println("Hello, Scala")
+    //    "magnet"
     new StringHandle("magnet")
   }
   // careful!
